@@ -6,7 +6,9 @@ export default [
             "username": "ReactJS"
         },
         "liked": true,
+        "likes": 2,
         "disliked": false,
+        "dislikes": 0,
         "verified": false,
         "handle": "ReactJS",
         "time": "2h",
@@ -31,7 +33,9 @@ export default [
             "username": "SpaceX"
         },
         "liked": false,
+        "likes": 0,
         "disliked": false,
+        "dislikes": 0,
         "verified": false,
         "handle": "spacex",
         "title": "",
@@ -57,7 +61,9 @@ export default [
             "username": "Scott Manley"
         },
         "liked": true,
+        "likes": 200,
         "disliked": true,
+        "dislikes": 10,
         "verified": true,
         "handle": "DJSnM",
         "postedOn": "2020-12-10",
@@ -81,7 +87,9 @@ export default [
             "username": "jQuery"
         },
         "liked": false,
+        "likes": 10,
         "disliked": false,
+        "dislikes": 2,
         "verified": false,
         "handle": "jQuery",
         "title": "jQuery",
@@ -104,7 +112,9 @@ export default [
             "username": "NodeJS"
         },
         "liked": true,
+        "likes": 123,
         "disliked": false,
+        "dislikes": 1,
         "verified": true,
         "handle": "NodeJS",
         "title": "",
