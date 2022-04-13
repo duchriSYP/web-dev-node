@@ -1,5 +1,5 @@
-import posts from "./tuits.js";
-//import tuitsDao from "../tuits-dao.js";
+//import posts from "./tuits.js";
+import * as tuitsDao from "../tuits-dao.js";
 //let tuits = posts;
 
 /*const createTuit = (req, res) => {
