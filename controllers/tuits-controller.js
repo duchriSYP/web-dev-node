@@ -41,7 +41,6 @@ const createTuit = async (req, res) => {
     newTuit.disliked = false;
     newTuit.likes = 0;
     newTuit.dislikes = 0;
-    tuits.push(newTuit);
     res.json(insertedTuit);
 }
 
