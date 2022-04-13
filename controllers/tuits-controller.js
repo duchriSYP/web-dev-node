@@ -58,7 +58,7 @@ const findAllTuits = async (req, res) => {
     res.sendStatus(200);
 }*/
 
-const updateTuit = (req, res) => {
+const updateTuit = async (req, res) => {
     const tuitdIdToUpdate = req.params.tid;
     const updatedTuit = req.body;
     const status = await tuitsDao.updateTuit(tuitdIdToUpdate, updatedTuit);
