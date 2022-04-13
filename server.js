@@ -6,7 +6,7 @@ import tuitsController from "./controllers/tuits-controller.js";
 import mongoose from 'mongoose';
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
-    || 'mongodb://127.0.0.1:27017/webdev'
+    || 'mongodb://localhost:27017/webdev'
 //mongoose.connect('mongodb://127.0.0.1:27017/webdev');
 mongoose.connect(CONNECTION_STRING);
 const app = express();
