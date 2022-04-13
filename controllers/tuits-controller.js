@@ -25,7 +25,6 @@ import * as tuitsDao from "../tuits-dao.js";
 
 const createTuit = async (req, res) => {
     const newTuit = req.body;
-    const insertedTuit = await tuitsDao.createTuit(newTuit);
     newTuit._id = (new Date()).getTime() + '';
     newTuit.handle = "AmongUs";
     newTuit.postedBy = { "username": "amongus" };
@@ -41,6 +40,7 @@ const createTuit = async (req, res) => {
     newTuit.disliked = false;
     newTuit.likes = 0;
     newTuit.dislikes = 0;
+    const insertedTuit = await tuitsDao.createTuit(newTuit);
     res.json(insertedTuit);
 }
 
