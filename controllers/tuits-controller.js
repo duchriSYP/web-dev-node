@@ -1,7 +1,8 @@
 import posts from "./tuits.js";
-let tuits = posts;
+//import tuitsDao from "../tuits-dao.js";
+//let tuits = posts;
 
-const createTuit = (req, res) => {
+/*const createTuit = (req, res) => {
     const newTuit = req.body;
     newTuit._id = (new Date()).getTime() + '';
     newTuit.handle = "AmongUs";
@@ -20,39 +21,63 @@ const createTuit = (req, res) => {
     newTuit.dislikes = 0;
     tuits.push(newTuit);
     res.json(newTuit);
+}*/
+
+const createTuit = async (req, res) => {
+    const newTuit = req.body;
+    const insertedTuit = await tuitsDao.createTuit(newTuit);
+    newTuit._id = (new Date()).getTime() + '';
+    newTuit.handle = "AmongUs";
+    newTuit.postedBy = { "username": "amongus" };
+    newTuit.logo = "../../../tuiter/among-us.png";
+    newTuit.avatar = "../../../tuiter/among-us.png";
+    newTuit.stats = {
+        "retuits": 111,
+        "likes": 222,
+        "comments": 333,
+        "dislikes": 0
+    }
+    newTuit.liked = false;
+    newTuit.disliked = false;
+    newTuit.likes = 0;
+    newTuit.dislikes = 0;
+    tuits.push(newTuit);
+    res.json(insertedTuit);
 }
 
-const findAllTuits = (req, res) => {
+
+const findAllTuits = async (req, res) => {
+    const tuits = await tuitsDao.findAllTuits()
     res.json(tuits);
 }
+
+/*const updateTuit = (req, res) => {
+    const tuitdIdToUpdate = req.params.tid;
+    const updatedTuit = req.body;
+    tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
+    res.sendStatus(200);
+}*/
 
 const updateTuit = (req, res) => {
     const tuitdIdToUpdate = req.params.tid;
     const updatedTuit = req.body;
-    // tuits = tuits.map(tuit => {
-    //     if (tuit._id === tuitdIdToUpdate) {
-    //         if (updatedTuit.liked === false) {
-    //             updatedTuit.stats.likes = tuit.stats.likes - 1;
-    //         } else if (updatedTuit.liked === true) {
-    //             updatedTuit.stats.likes = tuit.stats.likes + 1;
-    //         } else if (updatedTuit.disliked === false) {
-    //             updatedTuit.stats.dislikes = tuit.stats.dislikes - 1;
-    //         } else {
-    //             updatedTuit.stats.dislikes = tuit.stats.dislikes + 1;
-    //         }
-    //         return updatedTuit;
-    //     } else {
-    //         return tuit;
-    //     }
-    // })
+    const status = await tuitsDao.updateTuit(tuitdIdToUpdate, updatedTuit);
     tuits = tuits.map(t => t._id === tuitdIdToUpdate ? updatedTuit : t);
-    res.sendStatus(200);
+    res.send(status);
 }
 
-const deleteTuit = (req, res) => {
+
+/*const deleteTuit = (req, res) => {
     const tuitdIdToDelete = req.params.tid;
     tuits = tuits.filter(t => t._id !== tuitdIdToDelete);
     res.sendStatus(200);
+}*/
+
+const deleteTuit = async (req, res) => {
+    const tuitdIdToDelete = req.params.tid;
+    const status = await tuitsDao.deleteTuit(tuitdIdToDelete);
+    tuits = tuits.filter(t => t._id !== tuitdIdToDelete);
+    res.send(status);
 }
 
 export default (app) => {
